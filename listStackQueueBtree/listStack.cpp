@@ -7,7 +7,7 @@ private:
     DLList ls;
     size_t maxsize = 1;
 public:
-    void push(T * el);
+    void push(T & el);
     void pop();
     T * back();
     size_t size();
@@ -16,10 +16,10 @@ public:
 };
 
 template <typename T>
-void lStack<T>::push(T * el)
+void lStack<T>::push(T & el)
 {
     int s = ls.size();
-    ls.insert(s,el);
+    ls.insert(s,&el);
     if (maxsize == s) maxsize *= 2;
 }
 
@@ -61,11 +61,11 @@ int main()
 
     lStack<int> lstack;
     int x = 5;
-    lstack.push(&x);
+    lstack.push(x);
     int y = -10;
-    lstack.push(&y);
+    lstack.push(y);
     int z = 47;
-    lstack.push(&z);
+    lstack.push(z);
     std::cout << lstack.showmaxsize() << std::endl
               << lstack.size() << std::endl
               << *lstack.back() << std::endl;

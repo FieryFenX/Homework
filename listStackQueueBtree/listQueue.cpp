@@ -7,7 +7,7 @@ private:
     DLList ls;
     size_t maxsize = 1;
 public:
-    void push(T * el);
+    void push(T & el);
     void pop();
     T * top();
     size_t size();
@@ -16,10 +16,10 @@ public:
 };
 
 template <typename T>
-void lQueue<T>::push(T * el)
+void lQueue<T>::push(T & el)
 {
     int s = ls.size();
-    ls.insert(s,el);
+    ls.insert(s,&el);
     if (maxsize == s) maxsize *= 2;
 }
 
@@ -61,11 +61,11 @@ int main()
 
     lQueue<int> lqueue;
     int x = 5;
-    lqueue.push(&x);
+    lqueue.push(x);
     int y = -10;
-    lqueue.push(&y);
+    lqueue.push(y);
     int z = 47;
-    lqueue.push(&z);
+    lqueue.push(z);
     std::cout << lqueue.showmaxsize() << std::endl
               << lqueue.size() << std::endl
               << *lqueue.top() << std::endl;

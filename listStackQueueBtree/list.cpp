@@ -155,8 +155,8 @@ void testlist()
     dllist.insert(1,&x);
     std::cout << dllist.size() << std::endl;
     std::cout << *(int*)dllist.ptrbegin()->data << std::endl;
-    std::cout << *(double*)dllist.ptrend()->data << std::endl;
     std::cout << *(char*)dllist.find(2) << std::endl;
+    std::cout << *(double*)dllist.ptrend()->data << std::endl;
     dllist.remove(2);
     std::cout << dllist.size() << std::endl;
     std::cout << *(double*)dllist.ptrbegin()->next->data << std::endl;

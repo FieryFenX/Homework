@@ -9,7 +9,7 @@ private:
     size_t _size = 0;
     void newarr(T ** ptarr, size_t newsz, size_t sz);
 public:
-    void push(T * el);
+    void push(T & el);
     void pop();
     T * top();
     size_t size();
@@ -28,14 +28,14 @@ void aQueue<T>::newarr(T ** ptarr, size_t newsz, size_t sz)
 }
 
 template <typename T>
-void aQueue<T>::push(T * el)
+void aQueue<T>::push(T & el)
 {
     if (maxsize == _size)
     {
         maxsize *= 2;
         newarr(&arr, maxsize, _size);
     }
-    arr[_size++] = *el;
+    arr[_size++] = el;
 }
 
 template <typename T>
@@ -77,11 +77,11 @@ int main()
 {
     aQueue<int> aqueue;
     int x = 5;
-    aqueue.push(&x);
+    aqueue.push(x);
     int y = -10;
-    aqueue.push(&y);
+    aqueue.push(y);
     int z = 47;
-    aqueue.push(&z);
+    aqueue.push(z);
     std::cout << aqueue.showmaxsize() << std::endl
               << aqueue.size() << std::endl
               << *aqueue.top() << std::endl;
